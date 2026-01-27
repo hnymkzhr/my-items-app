@@ -89,9 +89,12 @@ function deleteItem(category, index) {
 
 // 初期処理
 loadItems();
-//"document.getElementById("addBtn").onclick = addItem;
-document.getElementById("addBtn").addEventListener("click", (e) => {
-  e.preventDefault();
-  addItem();
+document.getElementById("addBtn").onclick = addItem;
+
+document.getElementById("itemInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addItem();
+  }
 });
+
 
