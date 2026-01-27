@@ -87,12 +87,21 @@ function deleteItem(category, index) {
   renderList();
 }
 
-// 初期処理
-loadItems();
-document.getElementById("addBtn").onclick = addItem;
+// 要素をあらかじめ取得しておく
+const addBtn = document.getElementById("addBtn");
+const itemInput = document.getElementById("itemInput");
+const categoryInput = document.getElementById("categoryInput"); // これも追加
 
-document.getElementById("itemInput").addEventListener("keydown", (e) => {
+// 初期表示の実行
+loadItems();
+
+// クリックイベントの設定
+addBtn.addEventListener("click", addItem);
+
+// Enterキーの設定（これで正しく動きます！）
+itemInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    e.preventDefault();
     addItem();
   }
 });
