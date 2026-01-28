@@ -1,4 +1,5 @@
 // 変数の管理
+
 let currentGenre = null;
 let currentCategory = null;
 let collapsedCategories = new Set();
@@ -58,6 +59,12 @@ function editItem(genre, category, index) {
 
 // アイテムの削除
 function deleteItem(genre, category, index) {
+
+  // 確認ダイアログを表示
+  if (!confirm("このアイテムを削除してもよろしいですか？")) {
+    return; // キャンセルなら何もしない
+  }
+
   const items = getItems();
   const genres = getGenres();
   const categories = getCategories();
@@ -87,6 +94,21 @@ function deleteItem(genre, category, index) {
   renderList();
 }
 
+// 【新規】全データ削除機能
+function clearAllData() {
+  if (confirm("【警告】すべてのデータが消去されます。元に戻せませんがよろしいですか？")) {
+    localStorage.clear(); // ストレージを空にする
+    
+    // 変数もリセット
+    currentGenre = null;
+    currentCategory = null;
+    collapsedCategories.clear();
+    
+    // 画面を再読み込み（初期状態に戻る）
+    location.reload();
+  }
+}
+
 // ジャンルの選択
 function selectGenre(genre) {
   currentGenre = genre;
@@ -114,6 +136,7 @@ document.getElementById("addBtn").addEventListener("click", addItem);
 document.getElementById("itemInput").addEventListener("keydown", (e) => {
   if (e.key === "Enter") { e.preventDefault(); addItem(); }
 });
+document.getElementById("clearAllBtn").addEventListener("click", clearAllData);
 
 // 実行
 loadItems();
