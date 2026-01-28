@@ -131,38 +131,43 @@ function selectCategory(category) {
   renderList();
 }
 
-// イベント登録
-document.getElementById("addBtn").addEventListener("click", addItem);
+// アイテム追加のエンターキー対応
 document.getElementById("itemInput").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") { e.preventDefault(); addItem(); }
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addItem();
+  }
 });
-// 全削除ボタンのイベント登録
-const clearBtn = document.getElementById("clearAllBtn");
 
-// clickイベントだけでなく、iPhone用の touchend も考慮
-const clearAllHandler = (e) => {
-  e.preventDefault(); // 重複実行防止
-  
-  // 標準のダイアログ
+// 追加ボタン
+document.getElementById("addBtn").addEventListener("click", (e) => {
+  addItem();
+});
+
+// 全削除機能（関数を1つに統合）
+function handleClearAll() {
   const result = window.confirm("【警告】すべてのデータが消去されます。よろしいですか？");
   
   if (result) {
-    // 確実に消去するためにキーを個別に指定して消す
     localStorage.removeItem("my_items");
     localStorage.removeItem("my_categories");
     localStorage.removeItem("my_genres");
     
-    // 変数もリセット
+    // 変数リセット
     currentGenre = null;
     currentCategory = null;
     collapsedCategories.clear();
     
-    // 強制的にトップページへリダイレクト（リロードの代わり）
-    window.location.href = window.location.pathname;
+    // iPhoneでも確実に初期化するためにリダイレクト
+    window.location.replace(window.location.pathname);
   }
-};
+}
 
-clearBtn.addEventListener("click", clearAllHandler);
+// 全削除ボタンの登録（存在確認付き）
+const clearBtnElement = document.getElementById("clearAllBtn");
+if (clearBtnElement) {
+  clearBtnElement.onclick = handleClearAll; // addEventListenerよりiPhoneで安定しやすい
+}
 
 // 実行
 loadItems();
