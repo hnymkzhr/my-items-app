@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>持ち物管理</title>
+  <title>アイテム管理アプリ</title>
   <link rel="stylesheet" href="style.css">
   
 </head>
 
 <body>
-  <h1>📦 アイテム管理アプリ</h1>
+  <h1>📦 アイテム管理</h1>
 
   <form id="itemForm" class="input-area">
     <input id="genreInput" list="genreList" placeholder="ジャンル">
@@ -20,7 +20,9 @@
     <button type="button" id="addBtn">追加</button>
   </form>
 
- 
+  <div id="genreTabs"></div>
+  <div id="categoryTabs"></div>
+
   <div id="itemList"></div>
 
   <script src="script.js" defer></script>
