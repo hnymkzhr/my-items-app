@@ -132,6 +132,10 @@ function selectCategory(category) {
 }
 
 // イベント登録
+document.getElementById("addBtn").addEventListener("click", addItem);
+document.getElementById("itemInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") { e.preventDefault(); addItem(); }
+});
 // 全削除ボタンのイベント登録
 const clearBtn = document.getElementById("clearAllBtn");
 
