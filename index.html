@@ -9,11 +9,14 @@
 </head>
 
 <body>
-  <h1>📦 自分の持ち物管理アプリ</h1>
+  <h1>📦 アイテム管理アプリ</h1>
 
   <form id="itemForm" class="input-area">
-    <input id="categoryInput" placeholder="カテゴリ">
-    <input id="itemInput" placeholder="アイテム">
+    <input id="genreInput" list="genreList" placeholder="ジャンル">
+    <datalist id="genreList"></datalist>
+    <input id="categoryInput" list="categoryList" placeholder="カテゴリ">
+    <datalist id="categoryList"></datalist>
+       <input id="itemInput" placeholder="アイテム">
     <button type="button" id="addBtn">追加</button>
   </form>
 
