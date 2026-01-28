@@ -1,0 +1,78 @@
+/* タブ・リスト・ボタン */
+
+/* タブエリア */
+#genreTabs, #categoryTabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 10px 0;
+}
+
+#genreTabs button, #categoryTabs button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #eee;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+#genreTabs button.active, #categoryTabs button.active {
+  background: #333;
+  color: #fff;
+}
+
+/* リスト表示 */
+#itemList {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+#itemList h3 {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin: 20px 0 10px;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  background: #fff;
+  padding: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* ボタン類 */
+li div {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn {
+  background: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #ff3b30;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}

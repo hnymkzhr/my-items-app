@@ -1,0 +1,34 @@
+/* 入力エリア */
+
+.input-area {
+  max-width: 480px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-area input,
+.input-area button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#addBtn {
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .input-area {
+    max-width: 800px;
+    flex-direction: row;
+  }
+  .input-area button {
+    width: 120px;
+  }
+}
